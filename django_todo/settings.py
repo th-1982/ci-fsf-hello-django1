@@ -25,18 +25,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_an9$h6517g60fy6nqn%xdn!lr&nnb@hk#0z!s%&536nr-n67+'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-_an9$h6517g60fy6nqn % xdn!lr & nnb@hk  # 0z!s%&536nr-n67+’)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG=True
 
-ALLOWED_HOSTS = [
-    '8000-th-1982-ci-fsf-hello-dja-gac9sf7ks2.us2.codeanyapp.com']
+ALLOWED_HOSTS=[os.environ.get('HEROKU_HOSTNAME')]
 
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS=[
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,7 +45,7 @@ INSTALLED_APPS = [
     'todo'
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE=[
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -56,9 +55,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'django_todo.urls'
+ROOT_URLCONF='django_todo.urls'
 
-TEMPLATES = [
+TEMPLATES=[
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
@@ -74,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'django_todo.wsgi.application'
+WSGI_APPLICATION='django_todo.wsgi.application'
 
 
 # Database
@@ -88,15 +87,15 @@ WSGI_APPLICATION = 'django_todo.wsgi.application'
 # }
 
 
-DATABASES = {
-    'default': dj_database_url.parse('postgres://ksanykgm:sWQV59ubTSNPlo1C_FzkGheJyeJPpxLY@tyke.db.elephantsql.com/ksanykgm')
+DATABASES={
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
+AUTH_PASSWORD_VALIDATORS=[
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
@@ -115,23 +114,23 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE='en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE='UTC'
 
-USE_I18N = True
+USE_I18N=True
 
-USE_L10N = True
+USE_L10N=True
 
-USE_TZ = True
+USE_TZ=True
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL='/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD='django.db.models.BigAutoField'
